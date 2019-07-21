@@ -1,0 +1,25 @@
+﻿<Application x:Class="GamusinosProject.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GamusinosProject"
+             xmlns:View="clr-namespace:GamusinosProject.View"
+             xmlns:ViewModel="clr-namespace:GamusinosProject.ViewModel"
+             StartupUri="View/MainWindow.xaml"
+             >
+    <Application.Resources>
+        <View:CreateAccountWindow x:Key="{x:Type ViewModel:CreateAccountViewModel}" x:Shared="False" />
+        <View:VillageWindow x:Key="{x:Type ViewModel:VillageViewModel}" x:Shared="False" />
+        <View:MissionPanelWindow x:Key="{x:Type ViewModel:MissionPanelViewModel}" x:Shared="False" />
+        <View:HomeWindow x:Key="{x:Type ViewModel:HomeViewModel}" x:Shared="False" />
+        <View:TrunkWindow x:Key="{x:Type ViewModel:TrunkViewModel}" x:Shared="False" />
+        <View:InfoObjectTrunkWindow x:Key="{x:Type ViewModel:ObjectInfoTrunkViewModel}" x:Shared="False"/>
+        <View:QuantityTrunkWindow x:Key="{x:Type ViewModel:QuantityTrunkViewModel}" x:Shared="False"/>
+        <View:IronWorksWindow x:Key="{x:Type ViewModel:IronWorksViewModel}" x:Shared="False"/>
+        <View:CreateArmorWindow x:Key="{x:Type ViewModel:CreateArmorViewModel}" x:Shared="False"/>
+        <View:CreateWeaponWindow x:Key="{x:Type ViewModel:CreateWeaponViewModel}" x:Shared="False"/>
+        <View:ResetPassWindow x:Key="{x:Type ViewModel:ResetPassViewModel}" x:Shared="False"/>
+        <View:RecoverCodeWindow x:Key="{x:Type ViewModel:RecoverCodeViewModel}" x:Shared="False"/>
+        <View:SaveChangesWindow x:Key="{x:Type ViewModel:SaveChangesViewModel}" x:Shared="False"/>
+        <View:UsefulTipsWindow x:Key="{x:Type ViewModel:UsefulTipsViewModel}" x:Shared="False"/>
+    </Application.Resources>
+</Application>

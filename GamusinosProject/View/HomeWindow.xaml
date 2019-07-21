@@ -1,0 +1,67 @@
+﻿<Window x:Class="GamusinosProject.View.HomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GamusinosProject.View"
+        xmlns:View="clr-namespace:GamusinosProject.View"
+        xmlns:ViewModel="clr-namespace:GamusinosProject.ViewModel"
+        xmlns:dlgs="clr-namespace:MvvmDialogs.Behaviors;assembly=MvvmDialogs"
+        dlgs:DialogBehavior.DialogViewModels="{Binding Dialogs}"
+        mc:Ignorable="d"
+        Title="Home" Height="589.85" Width="641.541"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.DataContext>
+        <ViewModel:HomeViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Image HorizontalAlignment="Left" Height="129" Margin="40,33,0,0" VerticalAlignment="Top" Width="129" Source="/GamusinosProject;component/Resources/Logo Gamusino's Fantasy.png" Stretch="Fill"/>
+        <Label Content="Vitality" HorizontalAlignment="Left" Margin="101,214,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Force" HorizontalAlignment="Left" Margin="100,245,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Resistance" HorizontalAlignment="Left" Margin="100,276,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Speed" HorizontalAlignment="Left" Margin="100,307,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Luck" HorizontalAlignment="Left" Margin="100,338,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Hunter level" HorizontalAlignment="Left" Margin="258,152,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Hunter points" HorizontalAlignment="Left" Margin="379,152,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Quantity" HorizontalAlignment="Left" Margin="178,183,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Equipment bonus" HorizontalAlignment="Left" Margin="258,183,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Needed to improve" HorizontalAlignment="Left" Margin="379,183,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label HorizontalAlignment="Left" Margin="178,214,0,0" VerticalAlignment="Top" Content="{Binding Player.vitality}"/>
+        <Label HorizontalAlignment="Left" Margin="178,245,0,0" VerticalAlignment="Top" Content="{Binding Player.force}"/>
+        <Label HorizontalAlignment="Left" Margin="178,276,0,0" VerticalAlignment="Top" Content="{Binding Player.resistance}"/>
+        <Label Content="{Binding Player.speed}" HorizontalAlignment="Left" Margin="178,307,0,0" VerticalAlignment="Top"/>
+        <Label HorizontalAlignment="Left" Margin="178,338,0,0" VerticalAlignment="Top" Content="{Binding Player.luck}"/>
+        <Label HorizontalAlignment="Left" Margin="337,152,0,0" VerticalAlignment="Top" Content="{Binding HunterLvl}"/>
+        <Label HorizontalAlignment="Left" Margin="472,152,0,0" VerticalAlignment="Top" Content="{Binding Player.expPoints}"/>
+        <Label Content="{Binding EquipmentBonusVit}" HorizontalAlignment="Left" Margin="258,214,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding EquipmentBonusFor}" HorizontalAlignment="Left" Margin="258,245,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding EquipmentBonusRes}" HorizontalAlignment="Left" Margin="258,276,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding EquipmentBonusSpe}" HorizontalAlignment="Left" Margin="258,307,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding EquipmentBonusLuc}" HorizontalAlignment="Left" Margin="258,338,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding ImproveVit}" HorizontalAlignment="Left" Margin="379,214,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding ImproveFor}" HorizontalAlignment="Left" Margin="379,245,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding ImproveRes}" HorizontalAlignment="Left" Margin="379,276,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding ImproveSpe}" HorizontalAlignment="Left" Margin="379,307,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding ImproveLuc}" HorizontalAlignment="Left" Margin="379,338,0,0" VerticalAlignment="Top"/>
+        <Button Content="+" HorizontalAlignment="Left" Margin="493,220,0,0" VerticalAlignment="Top" Width="20" Height="20" IsEnabled="{Binding ImpVit}" Command="{Binding ImproveVitCommand}"/>
+        <Button Content="+" HorizontalAlignment="Left" Margin="493,252,0,0" VerticalAlignment="Top" Width="20" Height="20" IsEnabled="{Binding ImpFor}" Command="{Binding ImproveForCommand}"/>
+        <Button Content="+" HorizontalAlignment="Left" Margin="493,282,0,0" VerticalAlignment="Top" Width="20" Height="20" IsEnabled="{Binding ImpRes}" Command="{Binding ImproveResCommand}"/>
+        <Button Content="+" HorizontalAlignment="Left" Margin="493,313,0,0" VerticalAlignment="Top" Width="20" Height="20" IsEnabled="{Binding ImpSpe}" Command="{Binding ImproveSpeCommand}"/>
+        <Button Content="+" HorizontalAlignment="Left" Margin="493,344,0,0" VerticalAlignment="Top" Width="20" Height="20" IsEnabled="{Binding ImpLuc}" Command="{Binding ImproveLucCommand}"/>
+        <Button Content="" HorizontalAlignment="Right" Margin="0,454,49,0" VerticalAlignment="Top" Width="248" Height="80" Command="{Binding saveChangesCommand}">
+            <Button.Background>
+                <ImageBrush ImageSource="/GamusinosProject;component/Resources/Save Changes.png"/>
+            </Button.Background>
+        </Button>
+        <Button Content="" HorizontalAlignment="Left" Margin="59,454,0,0" VerticalAlignment="Top" Width="248" Height="80" Command="{Binding CloseCommand}">
+            <Button.Background>
+                <ImageBrush ImageSource="/GamusinosProject;component/Resources/Back to Village.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Equip weapon" HorizontalAlignment="Left" Margin="227,64,0,0" VerticalAlignment="Top"  FontWeight="Bold"/>
+        <Label Content="Equip armor" HorizontalAlignment="Left" Margin="388,64,0,0" VerticalAlignment="Top"  FontWeight="Bold"/>
+        <ComboBox HorizontalAlignment="Left" Margin="232,90,0,0" VerticalAlignment="Top" Width="151" ItemsSource="{Binding Player.Inventory.Weapons}" DisplayMemberPath="name" SelectedItem="{Binding ChWeapon}"/>
+        <ComboBox HorizontalAlignment="Left" Margin="393,90,0,0" VerticalAlignment="Top" Width="151" DisplayMemberPath="name" ItemsSource="{Binding Player.Inventory.Armors}" SelectedItem="{Binding ChArmor}"/>
+    </Grid>
+</Window>

@@ -1,0 +1,39 @@
+﻿<Window x:Class="GamusinosProject.View.VillageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GamusinosProject.View"
+        xmlns:View="clr-namespace:GamusinosProject.View"
+        xmlns:ViewModel="clr-namespace:GamusinosProject.ViewModel"
+        xmlns:dlgs="clr-namespace:MvvmDialogs.Behaviors;assembly=MvvmDialogs"
+        dlgs:DialogBehavior.DialogViewModels="{Binding Dialogs}"
+        mc:Ignorable="d"
+        Title="Village" Height="500" Width="700"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush ImageSource="/GamusinosProject;component/Resources/Village.png"/>
+    </Window.Background>
+    <Grid>
+        <Button Content="                      " HorizontalAlignment="Left" Margin="33,64,0,0" VerticalAlignment="Top" Width="173" Height="127" Command="{Binding MissionCommand}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="2.271"/>
+                    <RotateTransform Angle="-5.279"/>
+                    <TranslateTransform Y="-16.063" X="-0.955"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button Content="                      " HorizontalAlignment="Left" Margin="23,290,0,0" VerticalAlignment="Top" Width="261" Height="200" Command="{Binding IronCommand}" Background="{x:Null}" Foreground="{x:Null}"/>
+        <Button Content="                      " HorizontalAlignment="Left" Margin="527,31,0,0" VerticalAlignment="Top" Width="139" Height="177" Command="{Binding HomeCommand}" Background="{x:Null}"/>
+        <Button Content="                      " HorizontalAlignment="Left" Margin="547,336,0,0" VerticalAlignment="Top" Width="122" Height="56" Command="{Binding logoutCommand}">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <Button Content="                      " HorizontalAlignment="Left" Margin="430,111,0,0" VerticalAlignment="Top" Width="84" Height="100" Command="{Binding TrunkCommand}" Background="{x:Null}"/>
+        <Button Content="FAQ" HorizontalAlignment="Left" Margin="640,462,0,0" VerticalAlignment="Top" Width="42" Command="{Binding TipsCommand}"/>
+    </Grid>
+</Window>

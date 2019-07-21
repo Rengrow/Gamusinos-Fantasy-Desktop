@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9cb79a986b3a4bd9a708699fdf5062fe" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="GamusinosFantasyModel.Armor" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamusinosFantasyModel.Armor_Craft" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamusinosFantasyModel.Backpack" Width="1.5" PointX="15.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamusinosFantasyModel.Enemy" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamusinosFantasyModel.Enemy_Drop" Width="1.5" PointX="7.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamusinosFantasyModel.EnemyAssignedToAMission" Width="1.5" PointX="9.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamusinosFantasyModel.Inventory" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamusinosFantasyModel.Item" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamusinosFantasyModel.Mission" PointX="7.5" PointY="13.125" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamusinosFantasyModel.Player" Width="1.5" PointX="12.625" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamusinosFantasyModel.User" Width="1.5" PointX="9.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamusinosFantasyModel.Weapon" Width="1.5" PointX="5.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamusinosFantasyModel.Weapon_Craft" Width="1.5" PointX="10.5" PointY="10.875" IsExpanded="true" />
+        <AssociationConnector Association="GamusinosFantasyModel.fk_Item_has_Armor_Armor1" ManuallyRouted="false" />
+        <AssociationConnector Association="GamusinosFantasyModel.fk_Player_Armor1" ManuallyRouted="false" />
+        <AssociationConnector Association="GamusinosFantasyModel.fk_Item_has_Armor_Item1" ManuallyRouted="false" />
+        <AssociationConnector Association="GamusinosFantasyModel.fk_Player_Backpack1" ManuallyRouted="false" />
+        <AssociationConnector Association="GamusinosFantasyModel.fk_Item_has_Enemy_Enemy1" ManuallyRouted="false" />
+        <AssociationConnector Association="GamusinosFantasyModel.fk_Mission_has_Enemy_Enemy1" ManuallyRouted="false" />
+        <AssociationConnector Association="GamusinosFantasyModel.fk_Item_has_Enemy_Item1" ManuallyRouted="false" />
+        <AssociationConnector ManuallyRouted="false" Association="GamusinosFantasyModel.fk_Mission_has_Enemy_Mission1" />
+        <AssociationConnector Association="GamusinosFantasyModel.fk_Player_Inventory1" ManuallyRouted="false" />
+        <AssociationConnector Association="GamusinosFantasyModel.fk_Weapon_has_Item_Item1" ManuallyRouted="false" />
+        <AssociationConnector Association="GamusinosFantasyModel.fk_Player_Weapon1" ManuallyRouted="false" />
+        <AssociationConnector Association="GamusinosFantasyModel.fk_User_Player1" ManuallyRouted="false" />
+        <AssociationConnector Association="GamusinosFantasyModel.fk_Weapon_has_Item_Weapon1" ManuallyRouted="false" />
+        <AssociationConnector Association="GamusinosFantasyModel.Inventory_Armors" ManuallyRouted="false" />
+        <AssociationConnector Association="GamusinosFantasyModel.Inventory_Weapons" ManuallyRouted="false" />
+        <AssociationConnector ManuallyRouted="false" Association="GamusinosFantasyModel.SelectedMissions" />
+        <EntityTypeShape EntityType="GamusinosFantasyModel.Reward" Width="1.5" PointX="12.75" PointY="11" />
+        <AssociationConnector Association="GamusinosFantasyModel.fk_Item_has_Mission_Item1" />
+        <AssociationConnector Association="GamusinosFantasyModel.fk_Item_has_Mission_Mission1" />
+        <EntityTypeShape EntityType="GamusinosFantasyModel.Inventory_Items" Width="1.5" PointX="7.5" PointY="16.75" />
+        <AssociationConnector Association="GamusinosFantasyModel.fk_Item_has_Inventory_Inventory1" />
+        <AssociationConnector Association="GamusinosFantasyModel.fk_Item_has_Inventory_Item1" />
+        <EntityTypeShape EntityType="GamusinosFantasyModel.Backpack_Items" Width="1.5" PointX="17.5" PointY="13.375" />
+        <AssociationConnector Association="GamusinosFantasyModel.fk_Backpack_has_Item_Backpack1" />
+        <AssociationConnector Association="GamusinosFantasyModel.fk_Backpack_has_Item_Item1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

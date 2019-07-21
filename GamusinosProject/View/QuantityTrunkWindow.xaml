@@ -1,0 +1,32 @@
+﻿<Window x:Class="GamusinosProject.View.QuantityTrunkWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GamusinosProject.View"
+        xmlns:View="clr-namespace:GamusinosProject.View"
+        xmlns:ViewModel="clr-namespace:GamusinosProject.ViewModel"
+        mc:Ignorable="d"
+        Title="Trunk" Height="208" Width="408"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.DataContext>
+        <ViewModel:QuantityTrunkViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Button Content="" HorizontalAlignment="Left" Margin="62,130,0,0" VerticalAlignment="Top" Width="133" Height="52" Command="{Binding AcceptCommand}">
+            <Button.Background>
+                <ImageBrush ImageSource="/GamusinosProject;component/Resources/Accept.png"/>
+            </Button.Background>
+        </Button>
+        <Button Content="" HorizontalAlignment="Left" Margin="200,130,0,0" VerticalAlignment="Top" Width="136" Height="52" Command="{Binding CloseCommand}">
+            <Button.Background>
+                <ImageBrush ImageSource="/GamusinosProject;component/Resources/Cancel.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Quantity to drop" HorizontalAlignment="Left" Margin="49,68,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <Label Content="/" HorizontalAlignment="Left" Margin="257,68,0,0" VerticalAlignment="Top" FontSize="15" Width="26"/>
+        <Label HorizontalAlignment="Left" Margin="279,68,0,0" VerticalAlignment="Top" FontSize="15" Width="26" Content="{Binding Item.Quantity}"/>
+        <ComboBox HorizontalAlignment="Left" Margin="178,73,0,0" VerticalAlignment="Top" Width="66" ItemsSource="{Binding lQ}" SelectedItem="{Binding SelectedQnt}"/>
+    </Grid>
+</Window>

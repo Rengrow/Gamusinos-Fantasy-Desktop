@@ -1,0 +1,53 @@
+﻿<Window x:Class="GamusinosProject.View.UsefulTipsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GamusinosProject.View"
+        xmlns:View="clr-namespace:GamusinosProject.View"
+        xmlns:ViewModel="clr-namespace:GamusinosProject.ViewModel"
+        mc:Ignorable="d"
+        Title="UsefulTips" Height="497.564" Width="462.575"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.DataContext>
+        <ViewModel:UsefulTipsViewModel/>
+    </Window.DataContext>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,0,2">
+        <Grid Height="1247">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0*"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="lbl_title" Content="Useful Tips" HorizontalAlignment="Left" Margin="182,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.556,1.212" FontWeight="Bold" Height="26" Width="72"/>
+            <Label x:Name="lbl_missions" Content="1. Mission Panel" HorizontalAlignment="Left" Margin="28,48,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="101"/>
+            <Label x:Name="lbl_home" Content="2. Home" HorizontalAlignment="Left" Margin="28,478,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="57"/>
+            <Label x:Name="lbl_ironwork" Content="3. Ironwork" HorizontalAlignment="Left" Margin="28,783,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.081,0.363" FontWeight="Bold" Height="26" Width="75"/>
+            <Label x:Name="lbl_trunk" Content="4. Trunk" HorizontalAlignment="Left" Margin="28,1022,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="56" RenderTransformOrigin="1.071,14.231"/>
+
+            <Label x:Name="lbl_whatsamission" Content="What's a mission?" HorizontalAlignment="Left" Margin="48,79,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="110"/>
+            <Label x:Name="lbl_howacceptamission" Content="How do I accept a mission?" HorizontalAlignment="Left" Margin="48,144,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="164"/>
+            <Label x:Name="lbl_howdeclineamission" Content="How do I decline a mission?" HorizontalAlignment="Left" Margin="51,224,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="173"/>
+            <Label x:Name="lbl_whatsareward" Content="What's a reward?" HorizontalAlignment="Left" Margin="48,306,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="110"/>
+            <Label x:Name="lbl_howcompletemission" Content="How do I complete a mission?" HorizontalAlignment="Left" Margin="48,392,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="182"/>
+            <Label x:Name="lbl_whatshomefor" Content="What is the 'Home' for?" HorizontalAlignment="Left" Margin="48,509,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="144"/>
+            <Label x:Name="lbl_howtocreate" Content="How can I create a weapon or armor?" HorizontalAlignment="Left" Margin="51,814,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="220"/>
+            <Label x:Name="lbl_whatstrunkfor" Content="What is the Trunk for?" HorizontalAlignment="Left" Margin="51,1053,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="144"/>
+            <TextBlock x:Name="WhatIsAMission" HorizontalAlignment="Left" Height="39" Margin="48,100,0,0" TextWrapping="Wrap" Text="Is an important task or duty that is assigned and complete it gives you a reward." TextAlignment="Justify" VerticalAlignment="Top" Width="344"/>
+            <TextBlock x:Name="HowAcceptAMission" HorizontalAlignment="Left" Height="54" Margin="48,165,0,0" TextWrapping="Wrap" Text="In the Mission Panel, on the right side, there's a list with all the missions depending on the location. To accept, click one and on the left side, click the button 'Accept'." TextAlignment="Justify" VerticalAlignment="Top" Width="344"/>
+            <TextBlock x:Name="HowDeclineMission" HorizontalAlignment="Left" Height="54" Margin="51,250,0,0" TextWrapping="Wrap" Text="In the Mission Panel, on the left side, there's a list with all the missions accepted. To decline, click one mission and above, click the button 'Decline'." TextAlignment="Justify" VerticalAlignment="Top" Width="344"/>
+            <TextBlock x:Name="HowCompleteMission" HorizontalAlignment="Left" Height="40" Margin="48,421,0,0" TextWrapping="Wrap" Text="To know specify how complete a mission, consult 'Useful Tips' in the Smartphone App." VerticalAlignment="Top" TextAlignment="Justify" Width="344"/>
+            <TextBlock x:Name="WhatsAReward" HorizontalAlignment="Left" Height="55" Margin="48,332,0,0" TextWrapping="Wrap" Text="Is something given in recognition of service, effort and achievements completing missions. Can be: items, weapons, armors, etc." VerticalAlignment="Top" TextAlignment="Justify" Width="344"/>
+            <TextBlock x:Name="WhatsHomefor" HorizontalAlignment="Left" Height="216" Margin="51,540,0,0" TextWrapping="Wrap" Text="On the Home you can improve your attributes. To general terms you have 5 attributes: vitality, strength, resistance, speed and luck. Each one of these gives you different properties, improving:&#xA;&#xA;-Vitality: Gives you more health points.&#xA;-Strength: Increase the damage you cause.&#xA;-Resistance: Reduces the damage received.&#xA;-Speed: It makes you attack first and sometimes attack more than once per turn.&#xA;-Luck: Increase the amount of drop.&#xA;&#xA;Also at Home, is the only place where you can equip and discard weapons and armors." VerticalAlignment="Top" TextAlignment="Justify" Width="344"/>
+            <TextBlock x:Name="HowtoCreate" HorizontalAlignment="Left" Height="148" Margin="48,845,0,0" TextWrapping="Wrap" Text="On the Ironwork you can craft your own weapons and armors. The procedure for the creation of weapons and armors is the same. First of all, select the item which do you want to create from the list above. As you can see, automatically will appear on the list below, the items (means) and their respective quantities which you will need to craft it. And finally, click on the 'Create' button to create the item.&#xA;But remember! If you don't have enough materials, you won't be able to create the desired object." VerticalAlignment="Top" TextAlignment="Justify" Width="344"/>
+            <TextBlock x:Name="Whatstrunkfor" HorizontalAlignment="Left" Height="37" Margin="48,1084,0,0" TextWrapping="Wrap" Text="You can access it from the village. The Trunk is a large box for storing items, it's useful to free your inventory." VerticalAlignment="Top" TextAlignment="Justify" Width="344"/>
+            <Button Content="" HorizontalAlignment="Left" Margin="112,1165,0,0" VerticalAlignment="Top" Width="219" Height="58" Command="{Binding CloseCommand}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/GamusinosProject;component/Resources/Back to Village.png"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+    </ScrollViewer>
+</Window>
+
+

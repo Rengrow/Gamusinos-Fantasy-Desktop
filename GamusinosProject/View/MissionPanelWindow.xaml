@@ -1,0 +1,48 @@
+﻿<Window x:Class="GamusinosProject.View.MissionPanelWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GamusinosProject.View"
+        xmlns:View="clr-namespace:GamusinosProject.View"
+        xmlns:ViewModel="clr-namespace:GamusinosProject.ViewModel"
+        mc:Ignorable="d"
+        Title="Mision Panel" Height="500" Width="700"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.DataContext>
+        <ViewModel:MissionPanelViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Label Content="Location" HorizontalAlignment="Left" Margin="25,37,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="117,38,0,0" VerticalAlignment="Top" Width="180" Height="37" FontSize="20" ItemsSource="{Binding Locations}" SelectedItem="{Binding Selectedlocation}"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="175,84,0,0" VerticalAlignment="Top" Width="122" Height="60" Command="{Binding AcceptCommand}">
+            <Button.Background>
+                <ImageBrush ImageSource="/GamusinosProject;component/Resources/Accept.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Description:" HorizontalAlignment="Left" Margin="27,300,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <DataGrid HorizontalAlignment="Left" Margin="323,297,0,0" VerticalAlignment="Top" Height="170" Width="342" ItemsSource="{Binding Rewards}" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Item.name}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                <DataGridTextColumn Binding="{Binding Quantity}" ClipboardContentBinding="{x:Null}" Header="Quantity"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <ListBox HorizontalAlignment="Left" Height="158" Margin="323,79,0,0" VerticalAlignment="Top" Width="342" ItemsSource="{Binding Missions}" DisplayMemberPath="title" SelectedItem="{Binding SelectedMission}"/>
+        <Label Content="Missions" HorizontalAlignment="Left" Margin="323,37,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="Rewards" HorizontalAlignment="Left" Margin="323,249,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="45,400,0,0" VerticalAlignment="Top" Width="220" Height="67" Command="{Binding CloseCommand}">
+            <Button.Background>
+                <ImageBrush ImageSource="/GamusinosProject;component/Resources/Back to Village.png"/>
+            </Button.Background>
+        </Button>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="105" Margin="29,185,0,0" VerticalAlignment="Top" Width="268" ItemsSource="{Binding AcceptedMissions}" DisplayMemberPath="title" SelectedItem="{Binding SelectedMission}"/>
+        <Label Content="Accepted Missions" HorizontalAlignment="Left" Margin="25,144,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="33,84,0,0" VerticalAlignment="Top" Width="122" Height="60" Command="{Binding RemoveCommand}">
+            <Button.Background>
+                <ImageBrush ImageSource="/GamusinosProject;component/Resources/Decline.png"/>
+            </Button.Background>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="33,336,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="59" Width="268" Text="{Binding SelectedMission.description}"/>
+    </Grid>
+</Window>

@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{07D933A6-EEB8-4576-B488-FADFB488D07D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GamusinosProject</RootNamespace>
+    <AssemblyName>GamusinosProject</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Logo_Gamusino_s_Fantasy.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight">
+      <HintPath>..\MvvmDialogs\bin\Debug\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Model\Armor.cs">
+      <DependentUpon>GamusinosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Armor_Craft.cs">
+      <DependentUpon>GamusinosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Backpack.cs">
+      <DependentUpon>GamusinosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Backpack_Items.cs">
+      <DependentUpon>GamusinosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Enemy.cs">
+      <DependentUpon>GamusinosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EnemyAssignedToAMission.cs">
+      <DependentUpon>GamusinosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Enemy_Drop.cs">
+      <DependentUpon>GamusinosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GamusinosModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GamusinosModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GamusinosModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GamusinosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GamusinosModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GamusinosModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Inventory.cs">
+      <DependentUpon>GamusinosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Inventory_Items.cs">
+      <DependentUpon>GamusinosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Item.cs">
+      <DependentUpon>GamusinosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Mission.cs">
+      <DependentUpon>GamusinosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Player.cs">
+      <DependentUpon>GamusinosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Reward.cs">
+      <DependentUpon>GamusinosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\User.cs">
+      <DependentUpon>GamusinosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Weapon.cs">
+      <DependentUpon>GamusinosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Weapon_Craft.cs">
+      <DependentUpon>GamusinosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\CreateArmorViewModel.cs" />
+    <Compile Include="ViewModel\CreateWeaponViewModel.cs" />
+    <Compile Include="ViewModel\HomeViewModel.cs" />
+    <Compile Include="ViewModel\IronWorksViewModel.cs" />
+    <Compile Include="ViewModel\MissionPanelViewModel.cs" />
+    <Compile Include="ViewModel\ObjectInfoTrunkViewModel.cs" />
+    <Compile Include="ViewModel\QuantityTrunkViewModel.cs" />
+    <Compile Include="ViewModel\RecoverCodeViewModel.cs" />
+    <Compile Include="ViewModel\ResetPassViewModel.cs" />
+    <Compile Include="ViewModel\ResetPasswordMessageViewModel.cs" />
+    <Compile Include="ViewModel\SaveChangesViewModel.cs" />
+    <Compile Include="ViewModel\Tools\CurrentUser.cs" />
+    <Compile Include="ViewModel\Tools\Secure.cs" />
+    <Compile Include="ViewModel\Tools\SecurePasswordHasher.cs" />
+    <Compile Include="ViewModel\TrunkViewModel.cs" />
+    <Compile Include="ViewModel\UsefulTipsViewModel.cs" />
+    <Compile Include="ViewModel\VillageViewModel.cs" />
+    <Compile Include="View\CreateArmorWindow.xaml.cs">
+      <DependentUpon>CreateArmorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CreateWeaponWindow.xaml.cs">
+      <DependentUpon>CreateWeaponWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HomeWindow.xaml.cs">
+      <DependentUpon>HomeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\InfoObjectTrunkWindow.xaml.cs">
+      <DependentUpon>InfoObjectTrunkWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IronWorksWindow.xaml.cs">
+      <DependentUpon>IronWorksWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MissionPanelWindow.xaml.cs">
+      <DependentUpon>MissionPanelWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuantityTrunkWindow.xaml.cs">
+      <DependentUpon>QuantityTrunkWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RecoverCodeWindow.xaml.cs">
+      <DependentUpon>RecoverCodeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ResetPassWindow.xaml.cs">
+      <DependentUpon>ResetPassWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ResetPasswordMessageWindow.xaml.cs">
+      <DependentUpon>ResetPasswordMessageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SaveChangesWindow.xaml.cs">
+      <DependentUpon>SaveChangesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TrunkWindow.xaml.cs">
+      <DependentUpon>TrunkWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsefulTipsWindow.xaml.cs">
+      <DependentUpon>UsefulTipsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VillageWindow.xaml.cs">
+      <DependentUpon>VillageWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\CreateAccountWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CreateArmorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CreateWeaponWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HomeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InfoObjectTrunkWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IronWorksWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\CreateAccountViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="View\CreateAccountWindow.xaml.cs">
+      <DependentUpon>CreateAccountWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\MissionPanelWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuantityTrunkWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RecoverCodeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ResetPassWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ResetPasswordMessageWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\SaveChangesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TrunkWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UsefulTipsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VillageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model\GamusinosModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GamusinosModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\GamusinosModel.edmx.diagram">
+      <DependentUpon>GamusinosModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MvvmDialogs\MvvmDialogs.csproj">
+      <Project>{7be06c50-5544-455f-886d-95322b468e25}</Project>
+      <Name>MvvmDialogs</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Model\GamusinosModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GamusinosModel.edmx</DependentUpon>
+      <LastGenOutput>GamusinosModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\GamusinosModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GamusinosModel.edmx</DependentUpon>
+      <LastGenOutput>GamusinosModel.cs</LastGenOutput>
+    </Content>
+    <Resource Include="Resources\Save changes.png" />
+    <Resource Include="Resources\Logo Gamusino%27s Fantasy.png" />
+    <Resource Include="Resources\Accept.png" />
+    <Resource Include="Resources\Back to Login.png" />
+    <Resource Include="Resources\Back to Village.png" />
+    <Resource Include="Resources\Back.png" />
+    <Resource Include="Resources\Cancel.png" />
+    <Resource Include="Resources\Close.png" />
+    <Resource Include="Resources\Create armor.png" />
+    <Resource Include="Resources\Create weapon.png" />
+    <Resource Include="Resources\Create.png" />
+    <Resource Include="Resources\Decline.png" />
+    <Resource Include="Resources\Drop.png" />
+    <Resource Include="Resources\Get items from backpack.png" />
+    <Resource Include="Resources\Logo_Gamusino_s_Fantasy.ico" />
+    <Resource Include="Resources\Más.png" />
+    <Resource Include="Resources\No Get me out from here.png" />
+    <Resource Include="Resources\Reset password.png" />
+    <Resource Include="Resources\Yes I%27m Sure.png" />
+    <Resource Include="Resources\Login.png" />
+    <Resource Include="Resources\Village.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

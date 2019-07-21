@@ -1,0 +1,34 @@
+﻿<Window x:Class="GamusinosProject.View.InfoObjectTrunkWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GamusinosProject.View"
+        xmlns:View="clr-namespace:GamusinosProject.View"
+        xmlns:ViewModel="clr-namespace:GamusinosProject.ViewModel"
+        xmlns:dlgs="clr-namespace:MvvmDialogs.Behaviors;assembly=MvvmDialogs"
+        dlgs:DialogBehavior.DialogViewModels="{Binding Dialogs}"
+        mc:Ignorable="d"
+        Title="TrunkInfo" Height="208" Width="408"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.DataContext>
+        <ViewModel:ObjectInfoTrunkViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Button Content="" HorizontalAlignment="Left" Margin="17,139,0,0" VerticalAlignment="Top" Width="110" Height="43" Command="{Binding QuantityCommand}">
+            <Button.Background>
+                <ImageBrush ImageSource="/GamusinosProject;component/Resources/Drop.png"/>
+            </Button.Background>
+        </Button>
+        <Button Content="" HorizontalAlignment="Left" Margin="275,139,0,0" VerticalAlignment="Top" Width="110" Height="43" Command="{Binding CloseCommand}">
+            <Button.Background>
+                <ImageBrush ImageSource="/GamusinosProject;component/Resources/Back.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Description:" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" FontSize="16" Width="100"/>
+        <Label Content="Name:" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontSize="16" Width="60"/>
+        <Label HorizontalAlignment="Left" Margin="65,16,0,0" VerticalAlignment="Top" FontSize="16" Width="312" Content="{Binding Item.Item.name}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="17,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" Height="51" Text="{Binding Item.Item.description}"/>
+    </Grid>
+</Window>

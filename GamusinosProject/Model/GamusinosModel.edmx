@@ -1,0 +1,1386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GamusinosFantasyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Armor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="vitalityBonus" Type="bigint" Nullable="false" />
+          <Property Name="resistanceBonus" Type="bigint" Nullable="false" />
+          <Property Name="forceBonus" Type="bigint" Nullable="false" />
+          <Property Name="speedBonus" Type="bigint" Nullable="false" />
+          <Property Name="luckBonus" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Armor_Craft">
+          <Key>
+            <PropertyRef Name="Item_id" />
+            <PropertyRef Name="Armor_id" />
+          </Key>
+          <Property Name="Item_id" Type="bigint" Nullable="false" />
+          <Property Name="Armor_id" Type="bigint" Nullable="false" />
+          <Property Name="quantity" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Backpack">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Backpack_Items">
+          <Key>
+            <PropertyRef Name="Backpack_id" />
+            <PropertyRef Name="Item_id" />
+          </Key>
+          <Property Name="Backpack_id" Type="bigint" Nullable="false" />
+          <Property Name="Item_id" Type="bigint" Nullable="false" />
+          <Property Name="Quantity" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Enemy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="vitalityBase" Type="bigint" Nullable="false" />
+          <Property Name="strengthBase" Type="bigint" Nullable="false" />
+          <Property Name="resistanceBase" Type="bigint" Nullable="false" />
+          <Property Name="speedBase" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Enemy_Drop">
+          <Key>
+            <PropertyRef Name="Item_id" />
+            <PropertyRef Name="Enemy_id" />
+          </Key>
+          <Property Name="Item_id" Type="bigint" Nullable="false" />
+          <Property Name="Enemy_id" Type="bigint" Nullable="false" />
+          <Property Name="dropRate" Type="decimal" Precision="3" Scale="2" />
+        </EntityType>
+        <EntityType Name="EnemyAssignedToAMission">
+          <Key>
+            <PropertyRef Name="Mission_id" />
+            <PropertyRef Name="Enemy_id" />
+          </Key>
+          <Property Name="Mission_id" Type="bigint" Nullable="false" />
+          <Property Name="Enemy_id" Type="bigint" Nullable="false" />
+          <Property Name="Enemy_lvl" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inventory_Armors">
+          <Key>
+            <PropertyRef Name="Inventory_id" />
+            <PropertyRef Name="Armor_id" />
+          </Key>
+          <Property Name="Inventory_id" Type="bigint" Nullable="false" />
+          <Property Name="Armor_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inventory_Items">
+          <Key>
+            <PropertyRef Name="Item_id" />
+            <PropertyRef Name="Inventory_id" />
+          </Key>
+          <Property Name="Item_id" Type="bigint" Nullable="false" />
+          <Property Name="Inventory_id" Type="bigint" Nullable="false" />
+          <Property Name="Quantity" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Inventory_Weapons">
+          <Key>
+            <PropertyRef Name="Weapon_id" />
+            <PropertyRef Name="Inventory_id" />
+          </Key>
+          <Property Name="Weapon_id" Type="bigint" Nullable="false" />
+          <Property Name="Inventory_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mission">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="latitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="longitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="location" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="expPoints" Type="bigint" Nullable="false" />
+          <Property Name="vitality" Type="bigint" Nullable="false" />
+          <Property Name="resistance" Type="bigint" Nullable="false" />
+          <Property Name="force" Type="bigint" Nullable="false" />
+          <Property Name="speed" Type="bigint" Nullable="false" />
+          <Property Name="luck" Type="bigint" Nullable="false" />
+          <Property Name="Inventory_id" Type="bigint" Nullable="false" />
+          <Property Name="Backpack_id" Type="bigint" Nullable="false" />
+          <Property Name="Weapon_id" Type="bigint" Nullable="false" />
+          <Property Name="Armor_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reward">
+          <Key>
+            <PropertyRef Name="Item_id" />
+            <PropertyRef Name="Mission_id" />
+          </Key>
+          <Property Name="Item_id" Type="bigint" Nullable="false" />
+          <Property Name="Mission_id" Type="bigint" Nullable="false" />
+          <Property Name="Quantity" Type="bigint" />
+        </EntityType>
+        <EntityType Name="SelectedMissions">
+          <Key>
+            <PropertyRef Name="Player_id" />
+            <PropertyRef Name="Mission_id" />
+          </Key>
+          <Property Name="Player_id" Type="bigint" Nullable="false" />
+          <Property Name="Mission_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nick" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="recoverCode" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="lastLogin" Type="datetime" />
+          <Property Name="online" Type="tinyint" />
+          <Property Name="Player_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Weapon">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="vitalityBonus" Type="bigint" Nullable="false" />
+          <Property Name="resistanceBonus" Type="bigint" Nullable="false" />
+          <Property Name="forceBonus" Type="bigint" Nullable="false" />
+          <Property Name="speedBonus" Type="bigint" Nullable="false" />
+          <Property Name="luckBonus" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Weapon_Craft">
+          <Key>
+            <PropertyRef Name="Weapon_id" />
+            <PropertyRef Name="Item_id" />
+          </Key>
+          <Property Name="Weapon_id" Type="bigint" Nullable="false" />
+          <Property Name="Item_id" Type="bigint" Nullable="false" />
+          <Property Name="quantity" Type="bigint" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_Backpack_has_Item_Backpack1">
+          <End Role="Backpack" Type="Self.Backpack" Multiplicity="1" />
+          <End Role="Backpack_Items" Type="Self.Backpack_Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Backpack">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Backpack_Items">
+              <PropertyRef Name="Backpack_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Backpack_has_Item_Item1">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="Backpack_Items" Type="Self.Backpack_Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Backpack_Items">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Inventory_has_Armor_Armor1">
+          <End Role="Armor" Type="Self.Armor" Multiplicity="1" />
+          <End Role="Inventory_Armors" Type="Self.Inventory_Armors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Armor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inventory_Armors">
+              <PropertyRef Name="Armor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Inventory_has_Armor_Inventory1">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
+          <End Role="Inventory_Armors" Type="Self.Inventory_Armors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inventory_Armors">
+              <PropertyRef Name="Inventory_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_has_Armor_Armor1">
+          <End Role="Armor" Type="Self.Armor" Multiplicity="1" />
+          <End Role="Armor_Craft" Type="Self.Armor_Craft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Armor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Armor_Craft">
+              <PropertyRef Name="Armor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_has_Armor_Item1">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="Armor_Craft" Type="Self.Armor_Craft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Armor_Craft">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_has_Enemy_Enemy1">
+          <End Role="Enemy" Type="Self.Enemy" Multiplicity="1" />
+          <End Role="Enemy_Drop" Type="Self.Enemy_Drop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Enemy">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Enemy_Drop">
+              <PropertyRef Name="Enemy_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_has_Enemy_Item1">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="Enemy_Drop" Type="Self.Enemy_Drop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Enemy_Drop">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_has_Inventory_Inventory1">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
+          <End Role="Inventory_Items" Type="Self.Inventory_Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inventory_Items">
+              <PropertyRef Name="Inventory_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_has_Inventory_Item1">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="Inventory_Items" Type="Self.Inventory_Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inventory_Items">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_has_Mission_Item1">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="Reward" Type="Self.Reward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reward">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_has_Mission_Mission1">
+          <End Role="Mission" Type="Self.Mission" Multiplicity="1" />
+          <End Role="Reward" Type="Self.Reward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mission">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reward">
+              <PropertyRef Name="Mission_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Mission_has_Enemy_Enemy1">
+          <End Role="Enemy" Type="Self.Enemy" Multiplicity="1" />
+          <End Role="EnemyAssignedToAMission" Type="Self.EnemyAssignedToAMission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Enemy">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EnemyAssignedToAMission">
+              <PropertyRef Name="Enemy_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Mission_has_Enemy_Mission1">
+          <End Role="Mission" Type="Self.Mission" Multiplicity="1" />
+          <End Role="EnemyAssignedToAMission" Type="Self.EnemyAssignedToAMission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mission">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EnemyAssignedToAMission">
+              <PropertyRef Name="Mission_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Player_Armor1">
+          <End Role="Armor" Type="Self.Armor" Multiplicity="1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Armor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player">
+              <PropertyRef Name="Armor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Player_Backpack1">
+          <End Role="Backpack" Type="Self.Backpack" Multiplicity="1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Backpack">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player">
+              <PropertyRef Name="Backpack_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Player_has_Mission_Mission1">
+          <End Role="Mission" Type="Self.Mission" Multiplicity="1" />
+          <End Role="SelectedMissions" Type="Self.SelectedMissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mission">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SelectedMissions">
+              <PropertyRef Name="Mission_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Player_has_Mission_Player1">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="SelectedMissions" Type="Self.SelectedMissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SelectedMissions">
+              <PropertyRef Name="Player_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Player_Inventory1">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player">
+              <PropertyRef Name="Inventory_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Player_Weapon1">
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Weapon">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player">
+              <PropertyRef Name="Weapon_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_User_Player1">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Player_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Weapon_has_Inventory_Inventory1">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
+          <End Role="Inventory_Weapons" Type="Self.Inventory_Weapons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inventory_Weapons">
+              <PropertyRef Name="Inventory_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Weapon_has_Inventory_Weapon1">
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="1" />
+          <End Role="Inventory_Weapons" Type="Self.Inventory_Weapons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Weapon">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inventory_Weapons">
+              <PropertyRef Name="Weapon_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Weapon_has_Item_Item1">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="Weapon_Craft" Type="Self.Weapon_Craft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Weapon_Craft">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Weapon_has_Item_Weapon1">
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="1" />
+          <End Role="Weapon_Craft" Type="Self.Weapon_Craft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Weapon">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Weapon_Craft">
+              <PropertyRef Name="Weapon_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GamusinosFantasyModelStoreContainer">
+          <EntitySet Name="Armor" EntityType="Self.Armor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Armor_Craft" EntityType="Self.Armor_Craft" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Backpack" EntityType="Self.Backpack" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Backpack_Items" EntityType="Self.Backpack_Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enemy" EntityType="Self.Enemy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enemy_Drop" EntityType="Self.Enemy_Drop" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EnemyAssignedToAMission" EntityType="Self.EnemyAssignedToAMission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inventory_Armors" EntityType="Self.Inventory_Armors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inventory_Items" EntityType="Self.Inventory_Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inventory_Weapons" EntityType="Self.Inventory_Weapons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mission" EntityType="Self.Mission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reward" EntityType="Self.Reward" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SelectedMissions" EntityType="Self.SelectedMissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Weapon" EntityType="Self.Weapon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Weapon_Craft" EntityType="Self.Weapon_Craft" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_Backpack_has_Item_Backpack1" Association="Self.fk_Backpack_has_Item_Backpack1">
+            <End Role="Backpack" EntitySet="Backpack" />
+            <End Role="Backpack_Items" EntitySet="Backpack_Items" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Backpack_has_Item_Item1" Association="Self.fk_Backpack_has_Item_Item1">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Backpack_Items" EntitySet="Backpack_Items" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Inventory_has_Armor_Armor1" Association="Self.fk_Inventory_has_Armor_Armor1">
+            <End Role="Armor" EntitySet="Armor" />
+            <End Role="Inventory_Armors" EntitySet="Inventory_Armors" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Inventory_has_Armor_Inventory1" Association="Self.fk_Inventory_has_Armor_Inventory1">
+            <End Role="Inventory" EntitySet="Inventory" />
+            <End Role="Inventory_Armors" EntitySet="Inventory_Armors" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_has_Armor_Armor1" Association="Self.fk_Item_has_Armor_Armor1">
+            <End Role="Armor" EntitySet="Armor" />
+            <End Role="Armor_Craft" EntitySet="Armor_Craft" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_has_Armor_Item1" Association="Self.fk_Item_has_Armor_Item1">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Armor_Craft" EntitySet="Armor_Craft" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_has_Enemy_Enemy1" Association="Self.fk_Item_has_Enemy_Enemy1">
+            <End Role="Enemy" EntitySet="Enemy" />
+            <End Role="Enemy_Drop" EntitySet="Enemy_Drop" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_has_Enemy_Item1" Association="Self.fk_Item_has_Enemy_Item1">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Enemy_Drop" EntitySet="Enemy_Drop" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_has_Inventory_Inventory1" Association="Self.fk_Item_has_Inventory_Inventory1">
+            <End Role="Inventory" EntitySet="Inventory" />
+            <End Role="Inventory_Items" EntitySet="Inventory_Items" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_has_Inventory_Item1" Association="Self.fk_Item_has_Inventory_Item1">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Inventory_Items" EntitySet="Inventory_Items" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_has_Mission_Item1" Association="Self.fk_Item_has_Mission_Item1">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Reward" EntitySet="Reward" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_has_Mission_Mission1" Association="Self.fk_Item_has_Mission_Mission1">
+            <End Role="Mission" EntitySet="Mission" />
+            <End Role="Reward" EntitySet="Reward" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Mission_has_Enemy_Enemy1" Association="Self.fk_Mission_has_Enemy_Enemy1">
+            <End Role="Enemy" EntitySet="Enemy" />
+            <End Role="EnemyAssignedToAMission" EntitySet="EnemyAssignedToAMission" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Mission_has_Enemy_Mission1" Association="Self.fk_Mission_has_Enemy_Mission1">
+            <End Role="Mission" EntitySet="Mission" />
+            <End Role="EnemyAssignedToAMission" EntitySet="EnemyAssignedToAMission" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Player_Armor1" Association="Self.fk_Player_Armor1">
+            <End Role="Armor" EntitySet="Armor" />
+            <End Role="Player" EntitySet="Player" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Player_Backpack1" Association="Self.fk_Player_Backpack1">
+            <End Role="Backpack" EntitySet="Backpack" />
+            <End Role="Player" EntitySet="Player" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Player_has_Mission_Mission1" Association="Self.fk_Player_has_Mission_Mission1">
+            <End Role="Mission" EntitySet="Mission" />
+            <End Role="SelectedMissions" EntitySet="SelectedMissions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Player_has_Mission_Player1" Association="Self.fk_Player_has_Mission_Player1">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="SelectedMissions" EntitySet="SelectedMissions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Player_Inventory1" Association="Self.fk_Player_Inventory1">
+            <End Role="Inventory" EntitySet="Inventory" />
+            <End Role="Player" EntitySet="Player" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Player_Weapon1" Association="Self.fk_Player_Weapon1">
+            <End Role="Weapon" EntitySet="Weapon" />
+            <End Role="Player" EntitySet="Player" />
+          </AssociationSet>
+          <AssociationSet Name="fk_User_Player1" Association="Self.fk_User_Player1">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Weapon_has_Inventory_Inventory1" Association="Self.fk_Weapon_has_Inventory_Inventory1">
+            <End Role="Inventory" EntitySet="Inventory" />
+            <End Role="Inventory_Weapons" EntitySet="Inventory_Weapons" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Weapon_has_Inventory_Weapon1" Association="Self.fk_Weapon_has_Inventory_Weapon1">
+            <End Role="Weapon" EntitySet="Weapon" />
+            <End Role="Inventory_Weapons" EntitySet="Inventory_Weapons" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Weapon_has_Item_Item1" Association="Self.fk_Weapon_has_Item_Item1">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Weapon_Craft" EntitySet="Weapon_Craft" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Weapon_has_Item_Weapon1" Association="Self.fk_Weapon_has_Item_Weapon1">
+            <End Role="Weapon" EntitySet="Weapon" />
+            <End Role="Weapon_Craft" EntitySet="Weapon_Craft" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GamusinosFantasyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Armor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="vitalityBonus" Type="Int64" Nullable="false" />
+          <Property Name="resistanceBonus" Type="Int64" Nullable="false" />
+          <Property Name="forceBonus" Type="Int64" Nullable="false" />
+          <Property Name="speedBonus" Type="Int64" Nullable="false" />
+          <Property Name="luckBonus" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Armor_Craft" Relationship="Self.fk_Item_has_Armor_Armor1" FromRole="Armor" ToRole="Armor_Craft" />
+          <NavigationProperty Name="Players" Relationship="Self.fk_Player_Armor1" FromRole="Armor" ToRole="Player" />
+          <NavigationProperty Name="Inventories" Relationship="Self.Inventory_Armors" FromRole="Armor" ToRole="Inventory" />
+        </EntityType>
+        <EntityType Name="Armor_Craft">
+          <Key>
+            <PropertyRef Name="Item_id" />
+            <PropertyRef Name="Armor_id" />
+          </Key>
+          <Property Name="Item_id" Type="Int64" Nullable="false" />
+          <Property Name="Armor_id" Type="Int64" Nullable="false" />
+          <Property Name="quantity" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Armor" Relationship="Self.fk_Item_has_Armor_Armor1" FromRole="Armor_Craft" ToRole="Armor" />
+          <NavigationProperty Name="Item" Relationship="Self.fk_Item_has_Armor_Item1" FromRole="Armor_Craft" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Backpack">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Players" Relationship="Self.fk_Player_Backpack1" FromRole="Backpack" ToRole="Player" />
+          <NavigationProperty Name="Backpack_Items" Relationship="GamusinosFantasyModel.fk_Backpack_has_Item_Backpack1" FromRole="Backpack" ToRole="Backpack_Items" />
+        </EntityType>
+        <EntityType Name="Enemy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="vitalityBase" Type="Int64" Nullable="false" />
+          <Property Name="strengthBase" Type="Int64" Nullable="false" />
+          <Property Name="resistanceBase" Type="Int64" Nullable="false" />
+          <Property Name="speedBase" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Enemy_Drop" Relationship="Self.fk_Item_has_Enemy_Enemy1" FromRole="Enemy" ToRole="Enemy_Drop" />
+          <NavigationProperty Name="EnemyAssignedToAMissions" Relationship="Self.fk_Mission_has_Enemy_Enemy1" FromRole="Enemy" ToRole="EnemyAssignedToAMission" />
+        </EntityType>
+        <EntityType Name="Enemy_Drop">
+          <Key>
+            <PropertyRef Name="Item_id" />
+            <PropertyRef Name="Enemy_id" />
+          </Key>
+          <Property Name="Item_id" Type="Int64" Nullable="false" />
+          <Property Name="Enemy_id" Type="Int64" Nullable="false" />
+          <Property Name="dropRate" Type="Decimal" Precision="3" Scale="2" />
+          <NavigationProperty Name="Enemy" Relationship="Self.fk_Item_has_Enemy_Enemy1" FromRole="Enemy_Drop" ToRole="Enemy" />
+          <NavigationProperty Name="Item" Relationship="Self.fk_Item_has_Enemy_Item1" FromRole="Enemy_Drop" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="EnemyAssignedToAMission">
+          <Key>
+            <PropertyRef Name="Mission_id" />
+            <PropertyRef Name="Enemy_id" />
+          </Key>
+          <Property Name="Mission_id" Type="Int64" Nullable="false" />
+          <Property Name="Enemy_id" Type="Int64" Nullable="false" />
+          <Property Name="Enemy_lvl" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Enemy" Relationship="Self.fk_Mission_has_Enemy_Enemy1" FromRole="EnemyAssignedToAMission" ToRole="Enemy" />
+          <NavigationProperty Name="Mission" Relationship="Self.fk_Mission_has_Enemy_Mission1" FromRole="EnemyAssignedToAMission" ToRole="Mission" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Players" Relationship="Self.fk_Player_Inventory1" FromRole="Inventory" ToRole="Player" />
+          <NavigationProperty Name="Armors" Relationship="Self.Inventory_Armors" FromRole="Inventory" ToRole="Armor" />
+          <NavigationProperty Name="Weapons" Relationship="Self.Inventory_Weapons" FromRole="Inventory" ToRole="Weapon" />
+          <NavigationProperty Name="Inventory_Items" Relationship="GamusinosFantasyModel.fk_Item_has_Inventory_Inventory1" FromRole="Inventory" ToRole="Inventory_Items" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Armor_Craft" Relationship="Self.fk_Item_has_Armor_Item1" FromRole="Item" ToRole="Armor_Craft" />
+          <NavigationProperty Name="Enemy_Drop" Relationship="Self.fk_Item_has_Enemy_Item1" FromRole="Item" ToRole="Enemy_Drop" />
+          <NavigationProperty Name="Weapon_Craft" Relationship="Self.fk_Weapon_has_Item_Item1" FromRole="Item" ToRole="Weapon_Craft" />
+          <NavigationProperty Name="Rewards" Relationship="GamusinosFantasyModel.fk_Item_has_Mission_Item1" FromRole="Item" ToRole="Reward" />
+          <NavigationProperty Name="Inventory_Items" Relationship="GamusinosFantasyModel.fk_Item_has_Inventory_Item1" FromRole="Item" ToRole="Inventory_Items" />
+          <NavigationProperty Name="Backpack_Items" Relationship="GamusinosFantasyModel.fk_Backpack_has_Item_Item1" FromRole="Item" ToRole="Backpack_Items" />
+        </EntityType>
+        <EntityType Name="Mission">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int64" />
+          <Property Name="title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="description" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="latitude" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="longitude" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="location" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" Type="String" />
+          <NavigationProperty Name="EnemyAssignedToAMissions" Relationship="Self.fk_Mission_has_Enemy_Mission1" FromRole="Mission" ToRole="EnemyAssignedToAMission" />
+          <NavigationProperty Name="Players" Relationship="Self.SelectedMissions" FromRole="Mission" ToRole="Player" />
+          <NavigationProperty Name="Rewards" Relationship="GamusinosFantasyModel.fk_Item_has_Mission_Mission1" FromRole="Mission" ToRole="Reward" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="expPoints" Type="Int64" Nullable="false" />
+          <Property Name="vitality" Type="Int64" Nullable="false" />
+          <Property Name="resistance" Type="Int64" Nullable="false" />
+          <Property Name="force" Type="Int64" Nullable="false" />
+          <Property Name="speed" Type="Int64" Nullable="false" />
+          <Property Name="luck" Type="Int64" Nullable="false" />
+          <Property Name="Inventory_id" Type="Int64" Nullable="false" />
+          <Property Name="Backpack_id" Type="Int64" Nullable="false" />
+          <Property Name="Weapon_id" Type="Int64" Nullable="false" />
+          <Property Name="Armor_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Armor" Relationship="Self.fk_Player_Armor1" FromRole="Player" ToRole="Armor" />
+          <NavigationProperty Name="Backpack" Relationship="Self.fk_Player_Backpack1" FromRole="Player" ToRole="Backpack" />
+          <NavigationProperty Name="Inventory" Relationship="Self.fk_Player_Inventory1" FromRole="Player" ToRole="Inventory" />
+          <NavigationProperty Name="Weapon" Relationship="Self.fk_Player_Weapon1" FromRole="Player" ToRole="Weapon" />
+          <NavigationProperty Name="Users" Relationship="Self.fk_User_Player1" FromRole="Player" ToRole="User" />
+          <NavigationProperty Name="Missions" Relationship="Self.SelectedMissions" FromRole="Player" ToRole="Mission" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nick" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="recoverCode" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastLogin" Type="DateTime" Precision="3" />
+          <Property Name="online" Type="Byte" />
+          <Property Name="Player_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Player" Relationship="Self.fk_User_Player1" FromRole="User" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="Weapon">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="vitalityBonus" Type="Int64" Nullable="false" />
+          <Property Name="resistanceBonus" Type="Int64" Nullable="false" />
+          <Property Name="forceBonus" Type="Int64" Nullable="false" />
+          <Property Name="speedBonus" Type="Int64" Nullable="false" />
+          <Property Name="luckBonus" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Players" Relationship="Self.fk_Player_Weapon1" FromRole="Weapon" ToRole="Player" />
+          <NavigationProperty Name="Weapon_Craft" Relationship="Self.fk_Weapon_has_Item_Weapon1" FromRole="Weapon" ToRole="Weapon_Craft" />
+          <NavigationProperty Name="Inventories" Relationship="Self.Inventory_Weapons" FromRole="Weapon" ToRole="Inventory" />
+        </EntityType>
+        <EntityType Name="Weapon_Craft">
+          <Key>
+            <PropertyRef Name="Weapon_id" />
+            <PropertyRef Name="Item_id" />
+          </Key>
+          <Property Name="Weapon_id" Type="Int64" Nullable="false" />
+          <Property Name="Item_id" Type="Int64" Nullable="false" />
+          <Property Name="quantity" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Item" Relationship="Self.fk_Weapon_has_Item_Item1" FromRole="Weapon_Craft" ToRole="Item" />
+          <NavigationProperty Name="Weapon" Relationship="Self.fk_Weapon_has_Item_Weapon1" FromRole="Weapon_Craft" ToRole="Weapon" />
+        </EntityType>
+        <Association Name="fk_Item_has_Armor_Armor1">
+          <End Role="Armor" Type="Self.Armor" Multiplicity="1" />
+          <End Role="Armor_Craft" Type="Self.Armor_Craft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Armor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Armor_Craft">
+              <PropertyRef Name="Armor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Player_Armor1">
+          <End Role="Armor" Type="Self.Armor" Multiplicity="1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Armor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player">
+              <PropertyRef Name="Armor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_has_Armor_Item1">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="Armor_Craft" Type="Self.Armor_Craft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Armor_Craft">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Player_Backpack1">
+          <End Role="Backpack" Type="Self.Backpack" Multiplicity="1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Backpack">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player">
+              <PropertyRef Name="Backpack_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_has_Enemy_Enemy1">
+          <End Role="Enemy" Type="Self.Enemy" Multiplicity="1" />
+          <End Role="Enemy_Drop" Type="Self.Enemy_Drop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Enemy">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Enemy_Drop">
+              <PropertyRef Name="Enemy_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Mission_has_Enemy_Enemy1">
+          <End Role="Enemy" Type="Self.Enemy" Multiplicity="1" />
+          <End Role="EnemyAssignedToAMission" Type="Self.EnemyAssignedToAMission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Enemy">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EnemyAssignedToAMission">
+              <PropertyRef Name="Enemy_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_has_Enemy_Item1">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="Enemy_Drop" Type="Self.Enemy_Drop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Enemy_Drop">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Mission_has_Enemy_Mission1">
+          <End Type="Self.Mission" Multiplicity="1" Role="Mission" />
+          <End Type="Self.EnemyAssignedToAMission" Multiplicity="*" Role="EnemyAssignedToAMission" />
+          <ReferentialConstraint>
+            <Principal Role="Mission">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EnemyAssignedToAMission">
+              <PropertyRef Name="Mission_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Player_Inventory1">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player">
+              <PropertyRef Name="Inventory_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Weapon_has_Item_Item1">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="Weapon_Craft" Type="Self.Weapon_Craft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Weapon_Craft">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Player_Weapon1">
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Weapon">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player">
+              <PropertyRef Name="Weapon_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_User_Player1">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Player_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Weapon_has_Item_Weapon1">
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="1" />
+          <End Role="Weapon_Craft" Type="Self.Weapon_Craft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Weapon">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Weapon_Craft">
+              <PropertyRef Name="Weapon_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Inventory_Armors">
+          <End Role="Armor" Type="Self.Armor" Multiplicity="*" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+        </Association>
+        <Association Name="Inventory_Weapons">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="*" />
+        </Association>
+        <Association Name="SelectedMissions">
+          <End Type="Self.Mission" Multiplicity="*" Role="Mission" />
+          <End Type="Self.Player" Multiplicity="*" Role="Player" />
+        </Association>
+        <EntityContainer Name="GamusinosFantasyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Armors" EntityType="Self.Armor" />
+          <EntitySet Name="Armor_Craft" EntityType="Self.Armor_Craft" />
+          <EntitySet Name="Backpacks" EntityType="Self.Backpack" />
+          <EntitySet Name="Enemies" EntityType="Self.Enemy" />
+          <EntitySet Name="Enemy_Drop" EntityType="Self.Enemy_Drop" />
+          <EntitySet Name="EnemyAssignedToAMissions" EntityType="Self.EnemyAssignedToAMission" />
+          <EntitySet Name="Inventories" EntityType="Self.Inventory" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="Missions" EntityType="Self.Mission" />
+          <EntitySet Name="Players" EntityType="Self.Player" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Weapons" EntityType="Self.Weapon" />
+          <EntitySet Name="Weapon_Craft" EntityType="Self.Weapon_Craft" />
+          <AssociationSet Name="fk_Item_has_Armor_Armor1" Association="Self.fk_Item_has_Armor_Armor1">
+            <End Role="Armor" EntitySet="Armors" />
+            <End Role="Armor_Craft" EntitySet="Armor_Craft" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Player_Armor1" Association="Self.fk_Player_Armor1">
+            <End Role="Armor" EntitySet="Armors" />
+            <End Role="Player" EntitySet="Players" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_has_Armor_Item1" Association="Self.fk_Item_has_Armor_Item1">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Armor_Craft" EntitySet="Armor_Craft" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Player_Backpack1" Association="Self.fk_Player_Backpack1">
+            <End Role="Backpack" EntitySet="Backpacks" />
+            <End Role="Player" EntitySet="Players" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_has_Enemy_Enemy1" Association="Self.fk_Item_has_Enemy_Enemy1">
+            <End Role="Enemy" EntitySet="Enemies" />
+            <End Role="Enemy_Drop" EntitySet="Enemy_Drop" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Mission_has_Enemy_Enemy1" Association="Self.fk_Mission_has_Enemy_Enemy1">
+            <End Role="Enemy" EntitySet="Enemies" />
+            <End Role="EnemyAssignedToAMission" EntitySet="EnemyAssignedToAMissions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_has_Enemy_Item1" Association="Self.fk_Item_has_Enemy_Item1">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Enemy_Drop" EntitySet="Enemy_Drop" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Mission_has_Enemy_Mission1" Association="Self.fk_Mission_has_Enemy_Mission1">
+            <End EntitySet="Missions" Role="Mission" />
+            <End EntitySet="EnemyAssignedToAMissions" Role="EnemyAssignedToAMission" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Player_Inventory1" Association="Self.fk_Player_Inventory1">
+            <End Role="Inventory" EntitySet="Inventories" />
+            <End Role="Player" EntitySet="Players" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Weapon_has_Item_Item1" Association="Self.fk_Weapon_has_Item_Item1">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Weapon_Craft" EntitySet="Weapon_Craft" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Player_Weapon1" Association="Self.fk_Player_Weapon1">
+            <End Role="Weapon" EntitySet="Weapons" />
+            <End Role="Player" EntitySet="Players" />
+          </AssociationSet>
+          <AssociationSet Name="fk_User_Player1" Association="Self.fk_User_Player1">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Weapon_has_Item_Weapon1" Association="Self.fk_Weapon_has_Item_Weapon1">
+            <End Role="Weapon" EntitySet="Weapons" />
+            <End Role="Weapon_Craft" EntitySet="Weapon_Craft" />
+          </AssociationSet>
+          <AssociationSet Name="Inventory_Armors" Association="Self.Inventory_Armors">
+            <End Role="Armor" EntitySet="Armors" />
+            <End Role="Inventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="Inventory_Weapons" Association="Self.Inventory_Weapons">
+            <End Role="Inventory" EntitySet="Inventories" />
+            <End Role="Weapon" EntitySet="Weapons" />
+          </AssociationSet>
+          <AssociationSet Name="SelectedMissions" Association="Self.SelectedMissions">
+            <End EntitySet="Missions" Role="Mission" />
+            <End EntitySet="Players" Role="Player" />
+          </AssociationSet>
+          <EntitySet Name="Rewards" EntityType="GamusinosFantasyModel.Reward" />
+          <AssociationSet Name="fk_Item_has_Mission_Item1" Association="GamusinosFantasyModel.fk_Item_has_Mission_Item1">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Reward" EntitySet="Rewards" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_has_Mission_Mission1" Association="GamusinosFantasyModel.fk_Item_has_Mission_Mission1">
+            <End Role="Mission" EntitySet="Missions" />
+            <End Role="Reward" EntitySet="Rewards" />
+          </AssociationSet>
+          <EntitySet Name="Inventory_Items" EntityType="GamusinosFantasyModel.Inventory_Items" />
+          <AssociationSet Name="fk_Item_has_Inventory_Inventory1" Association="GamusinosFantasyModel.fk_Item_has_Inventory_Inventory1">
+            <End Role="Inventory" EntitySet="Inventories" />
+            <End Role="Inventory_Items" EntitySet="Inventory_Items" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_has_Inventory_Item1" Association="GamusinosFantasyModel.fk_Item_has_Inventory_Item1">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Inventory_Items" EntitySet="Inventory_Items" />
+          </AssociationSet>
+          <EntitySet Name="Backpack_Items" EntityType="GamusinosFantasyModel.Backpack_Items" />
+          <AssociationSet Name="fk_Backpack_has_Item_Backpack1" Association="GamusinosFantasyModel.fk_Backpack_has_Item_Backpack1">
+            <End Role="Backpack" EntitySet="Backpacks" />
+            <End Role="Backpack_Items" EntitySet="Backpack_Items" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Backpack_has_Item_Item1" Association="GamusinosFantasyModel.fk_Backpack_has_Item_Item1">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Backpack_Items" EntitySet="Backpack_Items" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Reward">
+          <Key>
+            <PropertyRef Name="Item_id" />
+            <PropertyRef Name="Mission_id" />
+          </Key>
+          <Property Name="Item_id" Type="Int64" Nullable="false" />
+          <Property Name="Mission_id" Type="Int64" Nullable="false" />
+          <Property Name="Quantity" Type="Int64" />
+          <NavigationProperty Name="Item" Relationship="GamusinosFantasyModel.fk_Item_has_Mission_Item1" FromRole="Reward" ToRole="Item" />
+          <NavigationProperty Name="Mission" Relationship="GamusinosFantasyModel.fk_Item_has_Mission_Mission1" FromRole="Reward" ToRole="Mission" />
+        </EntityType>
+        <Association Name="fk_Item_has_Mission_Item1">
+          <End Type="GamusinosFantasyModel.Item" Role="Item" Multiplicity="1" />
+          <End Type="GamusinosFantasyModel.Reward" Role="Reward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reward">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_has_Mission_Mission1">
+          <End Type="GamusinosFantasyModel.Mission" Role="Mission" Multiplicity="1" />
+          <End Type="GamusinosFantasyModel.Reward" Role="Reward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mission">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reward">
+              <PropertyRef Name="Mission_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Inventory_Items">
+          <Key>
+            <PropertyRef Name="Item_id" />
+            <PropertyRef Name="Inventory_id" />
+          </Key>
+          <Property Name="Item_id" Type="Int64" Nullable="false" />
+          <Property Name="Inventory_id" Type="Int64" Nullable="false" />
+          <Property Name="Quantity" Type="Int64" />
+          <NavigationProperty Name="Inventory" Relationship="GamusinosFantasyModel.fk_Item_has_Inventory_Inventory1" FromRole="Inventory_Items" ToRole="Inventory" />
+          <NavigationProperty Name="Item" Relationship="GamusinosFantasyModel.fk_Item_has_Inventory_Item1" FromRole="Inventory_Items" ToRole="Item" />
+        </EntityType>
+        <Association Name="fk_Item_has_Inventory_Inventory1">
+          <End Type="GamusinosFantasyModel.Inventory" Role="Inventory" Multiplicity="1" />
+          <End Type="GamusinosFantasyModel.Inventory_Items" Role="Inventory_Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inventory_Items">
+              <PropertyRef Name="Inventory_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_has_Inventory_Item1">
+          <End Type="GamusinosFantasyModel.Item" Role="Item" Multiplicity="1" />
+          <End Type="GamusinosFantasyModel.Inventory_Items" Role="Inventory_Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inventory_Items">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Backpack_Items">
+          <Key>
+            <PropertyRef Name="Backpack_id" />
+            <PropertyRef Name="Item_id" />
+          </Key>
+          <Property Name="Backpack_id" Type="Int64" Nullable="false" />
+          <Property Name="Item_id" Type="Int64" Nullable="false" />
+          <Property Name="Quantity" Type="Int64" />
+          <NavigationProperty Name="Backpack" Relationship="GamusinosFantasyModel.fk_Backpack_has_Item_Backpack1" FromRole="Backpack_Items" ToRole="Backpack" />
+          <NavigationProperty Name="Item" Relationship="GamusinosFantasyModel.fk_Backpack_has_Item_Item1" FromRole="Backpack_Items" ToRole="Item" />
+        </EntityType>
+        <Association Name="fk_Backpack_has_Item_Backpack1">
+          <End Type="GamusinosFantasyModel.Backpack" Role="Backpack" Multiplicity="1" />
+          <End Type="GamusinosFantasyModel.Backpack_Items" Role="Backpack_Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Backpack">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Backpack_Items">
+              <PropertyRef Name="Backpack_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Backpack_has_Item_Item1">
+          <End Type="GamusinosFantasyModel.Item" Role="Item" Multiplicity="1" />
+          <End Type="GamusinosFantasyModel.Backpack_Items" Role="Backpack_Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Backpack_Items">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GamusinosFantasyModelStoreContainer" CdmEntityContainer="GamusinosFantasyEntities">
+          <EntitySetMapping Name="Armors">
+            <EntityTypeMapping TypeName="GamusinosFantasyModel.Armor">
+              <MappingFragment StoreEntitySet="Armor">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="vitalityBonus" ColumnName="vitalityBonus" />
+                <ScalarProperty Name="resistanceBonus" ColumnName="resistanceBonus" />
+                <ScalarProperty Name="forceBonus" ColumnName="forceBonus" />
+                <ScalarProperty Name="speedBonus" ColumnName="speedBonus" />
+                <ScalarProperty Name="luckBonus" ColumnName="luckBonus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Armor_Craft">
+            <EntityTypeMapping TypeName="GamusinosFantasyModel.Armor_Craft">
+              <MappingFragment StoreEntitySet="Armor_Craft">
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+                <ScalarProperty Name="Armor_id" ColumnName="Armor_id" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Backpacks">
+            <EntityTypeMapping TypeName="GamusinosFantasyModel.Backpack">
+              <MappingFragment StoreEntitySet="Backpack">
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enemies">
+            <EntityTypeMapping TypeName="GamusinosFantasyModel.Enemy">
+              <MappingFragment StoreEntitySet="Enemy">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="vitalityBase" ColumnName="vitalityBase" />
+                <ScalarProperty Name="strengthBase" ColumnName="strengthBase" />
+                <ScalarProperty Name="resistanceBase" ColumnName="resistanceBase" />
+                <ScalarProperty Name="speedBase" ColumnName="speedBase" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enemy_Drop">
+            <EntityTypeMapping TypeName="GamusinosFantasyModel.Enemy_Drop">
+              <MappingFragment StoreEntitySet="Enemy_Drop">
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+                <ScalarProperty Name="Enemy_id" ColumnName="Enemy_id" />
+                <ScalarProperty Name="dropRate" ColumnName="dropRate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnemyAssignedToAMissions">
+            <EntityTypeMapping TypeName="GamusinosFantasyModel.EnemyAssignedToAMission">
+              <MappingFragment StoreEntitySet="EnemyAssignedToAMission">
+                <ScalarProperty Name="Mission_id" ColumnName="Mission_id" />
+                <ScalarProperty Name="Enemy_id" ColumnName="Enemy_id" />
+                <ScalarProperty Name="Enemy_lvl" ColumnName="Enemy_lvl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventories">
+            <EntityTypeMapping TypeName="GamusinosFantasyModel.Inventory">
+              <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="GamusinosFantasyModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Missions">
+            <EntityTypeMapping TypeName="GamusinosFantasyModel.Mission">
+              <MappingFragment StoreEntitySet="Mission">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="location" ColumnName="location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Players">
+            <EntityTypeMapping TypeName="GamusinosFantasyModel.Player">
+              <MappingFragment StoreEntitySet="Player">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="expPoints" ColumnName="expPoints" />
+                <ScalarProperty Name="vitality" ColumnName="vitality" />
+                <ScalarProperty Name="resistance" ColumnName="resistance" />
+                <ScalarProperty Name="force" ColumnName="force" />
+                <ScalarProperty Name="speed" ColumnName="speed" />
+                <ScalarProperty Name="luck" ColumnName="luck" />
+                <ScalarProperty Name="Inventory_id" ColumnName="Inventory_id" />
+                <ScalarProperty Name="Backpack_id" ColumnName="Backpack_id" />
+                <ScalarProperty Name="Weapon_id" ColumnName="Weapon_id" />
+                <ScalarProperty Name="Armor_id" ColumnName="Armor_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="GamusinosFantasyModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nick" ColumnName="nick" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="recoverCode" ColumnName="recoverCode" />
+                <ScalarProperty Name="lastLogin" ColumnName="lastLogin" />
+                <ScalarProperty Name="online" ColumnName="online" />
+                <ScalarProperty Name="Player_id" ColumnName="Player_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Weapons">
+            <EntityTypeMapping TypeName="GamusinosFantasyModel.Weapon">
+              <MappingFragment StoreEntitySet="Weapon">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="vitalityBonus" ColumnName="vitalityBonus" />
+                <ScalarProperty Name="resistanceBonus" ColumnName="resistanceBonus" />
+                <ScalarProperty Name="forceBonus" ColumnName="forceBonus" />
+                <ScalarProperty Name="speedBonus" ColumnName="speedBonus" />
+                <ScalarProperty Name="luckBonus" ColumnName="luckBonus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Weapon_Craft">
+            <EntityTypeMapping TypeName="GamusinosFantasyModel.Weapon_Craft">
+              <MappingFragment StoreEntitySet="Weapon_Craft">
+                <ScalarProperty Name="Weapon_id" ColumnName="Weapon_id" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Inventory_Armors" TypeName="GamusinosFantasyModel.Inventory_Armors" StoreEntitySet="Inventory_Armors">
+            <EndProperty Name="Armor">
+              <ScalarProperty Name="id" ColumnName="Armor_id" />
+            </EndProperty>
+            <EndProperty Name="Inventory">
+              <ScalarProperty Name="id" ColumnName="Inventory_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Inventory_Weapons" TypeName="GamusinosFantasyModel.Inventory_Weapons" StoreEntitySet="Inventory_Weapons">
+            <EndProperty Name="Inventory">
+              <ScalarProperty Name="id" ColumnName="Inventory_id" />
+            </EndProperty>
+            <EndProperty Name="Weapon">
+              <ScalarProperty Name="id" ColumnName="Weapon_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="SelectedMissions" TypeName="GamusinosFantasyModel.SelectedMissions" StoreEntitySet="SelectedMissions">
+            <EndProperty Name="Mission">
+              <ScalarProperty Name="id" ColumnName="Mission_id" />
+            </EndProperty>
+            <EndProperty Name="Player">
+              <ScalarProperty Name="id" ColumnName="Player_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Rewards">
+            <EntityTypeMapping TypeName="GamusinosFantasyModel.Reward">
+              <MappingFragment StoreEntitySet="Reward">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Mission_id" ColumnName="Mission_id" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventory_Items">
+            <EntityTypeMapping TypeName="GamusinosFantasyModel.Inventory_Items">
+              <MappingFragment StoreEntitySet="Inventory_Items">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Inventory_id" ColumnName="Inventory_id" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Backpack_Items">
+            <EntityTypeMapping TypeName="GamusinosFantasyModel.Backpack_Items">
+              <MappingFragment StoreEntitySet="Backpack_Items">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+                <ScalarProperty Name="Backpack_id" ColumnName="Backpack_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

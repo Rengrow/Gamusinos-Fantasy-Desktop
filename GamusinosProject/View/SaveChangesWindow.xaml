@@ -1,0 +1,57 @@
+﻿<Window x:Class="GamusinosProject.View.SaveChangesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GamusinosProject.View"
+        xmlns:View="clr-namespace:GamusinosProject.View"
+        xmlns:ViewModel="clr-namespace:GamusinosProject.ViewModel"
+        xmlns:dlgs="clr-namespace:MvvmDialogs.Behaviors;assembly=MvvmDialogs"
+        dlgs:DialogBehavior.DialogViewModels="{Binding Dialogs}"
+        mc:Ignorable="d"
+        Title="Home" Height="400" Width="510"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.DataContext>
+        <ViewModel:SaveChangesViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Label Content="¡¡¡WARNING!!!" HorizontalAlignment="Left" Margin="32,18,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="Red" FontSize="20"/>
+        <Label Content="You will never be able to revert the changes of your stats, &#13;are you sure?" HorizontalAlignment="Left" Margin="33,61,0,0" VerticalAlignment="Top" FontSize="17" Foreground="Red"/>
+        <Label Content="Vitality" HorizontalAlignment="Left" Margin="32,116,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Player.vitality}" HorizontalAlignment="Left" Margin="102,116,0,0" VerticalAlignment="Top"/>
+        <Label Content="=>" HorizontalAlignment="Left" Margin="130,116,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding NewVit}" HorizontalAlignment="Left" Margin="160,116,0,0" VerticalAlignment="Top"/>
+        <Label Content="Force" HorizontalAlignment="Left" Margin="32,147,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Player.force}" HorizontalAlignment="Left" Margin="102,147,0,0" VerticalAlignment="Top"/>
+        <Label Content="=>" HorizontalAlignment="Left" Margin="130,147,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding NewFor}" HorizontalAlignment="Left" Margin="160,147,0,0" VerticalAlignment="Top"/>
+        <Label Content="Resistance" HorizontalAlignment="Left" Margin="32,178,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Player.resistance}" HorizontalAlignment="Left" Margin="102,178,0,0" VerticalAlignment="Top"/>
+        <Label Content="=>" HorizontalAlignment="Left" Margin="130,178,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding NewRes}" HorizontalAlignment="Left" Margin="160,178,0,0" VerticalAlignment="Top"/>
+        <Label Content="Speed" HorizontalAlignment="Left" Margin="32,209,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Player.speed}" HorizontalAlignment="Left" Margin="102,209,0,0" VerticalAlignment="Top"/>
+        <Label Content="=>" HorizontalAlignment="Left" Margin="130,209,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding NewSpe}" HorizontalAlignment="Left" Margin="160,209,0,0" VerticalAlignment="Top"/>
+        <Label Content="Luck" HorizontalAlignment="Left" Margin="33,240,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Player.luck}" HorizontalAlignment="Left" Margin="102,240,0,0" VerticalAlignment="Top"/>
+        <Label Content="=>" HorizontalAlignment="Left" Margin="130,240,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding NewLuc}" HorizontalAlignment="Left" Margin="160,240,0,0" VerticalAlignment="Top"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="20,293,0,0" VerticalAlignment="Top" Width="182" Height="70" Command="{Binding SaveChangesCommand}">
+            <Button.Background>
+                <ImageBrush ImageSource="/GamusinosProject;component/Resources/Yes I'm Sure.png"/>
+            </Button.Background>
+        </Button>
+        <Button Content="" HorizontalAlignment="Left" Margin="220,293,0,0" VerticalAlignment="Top" Width="260" Height="70" Command="{Binding CloseCommand}">
+            <Button.Background>
+                <ImageBrush ImageSource="/GamusinosProject;component/Resources/No Get me out from here.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="You're gonna equip:" HorizontalAlignment="Left" Margin="271,116,0,0" VerticalAlignment="Top"/>
+        <Label Content="Armor     =>" HorizontalAlignment="Left" Margin="271,147,0,0" VerticalAlignment="Top"/>
+        <Label Content="Weapon  =>" HorizontalAlignment="Left" Margin="271,178,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding NewArmor.name}" HorizontalAlignment="Left" Margin="351,147,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding NewWeapon.name}" HorizontalAlignment="Left" Margin="353,178,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
